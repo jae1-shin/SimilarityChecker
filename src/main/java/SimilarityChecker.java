@@ -24,8 +24,11 @@ public class SimilarityChecker {
     }
 
     public int lengthCheck() {
-        int result = 60;
+        if (firstString.length() == secondString.length()) {
+            return 60; // Assuming 60 is the score for equal length strings
+        }
 
+        int result = 60;
         return result;
     }
 }
