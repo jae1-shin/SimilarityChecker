@@ -27,5 +27,15 @@ class SimilarityCheckerTest {
         assertEquals(60, checker.lengthCheck());
     }
 
+    @Test
+    void lengthCheckWhenStringsWith2TimesOrMoreDiff1() {
+        checker = new SimilarityChecker("test", "te");
+        assertEquals(0, checker.lengthCheck());
+    }
+    @Test
+    void lengthCheckWhenStringsWith2TimesOrMoreDiff2() {
+        checker = new SimilarityChecker("a", "abc");
+        assertEquals(0, checker.lengthCheck());
+    }
 
 }
