@@ -35,11 +35,18 @@ public class SimilarityChecker {
             return 60;
         }
 
-        if (firstLength / secondLength >= 2 || secondLength / firstLength >= 2) {
+        if (isDoubleOrMoreLengthDiff(firstLength, secondLength)) {
             return 0;
         }
 
         return getPartialScore(firstLength, secondLength);
+    }
+
+    private boolean isDoubleOrMoreLengthDiff(int firstLength, int secondLength) {
+        int maxLength = Math.max(firstLength, secondLength);
+        int minLength = Math.min(firstLength, secondLength);
+
+        return maxLength / minLength >= 2;
     }
 
     private int getPartialScore(int firstLength, int secondLength) {
