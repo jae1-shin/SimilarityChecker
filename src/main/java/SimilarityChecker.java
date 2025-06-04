@@ -3,6 +3,10 @@ public class SimilarityChecker {
     private String secondString;
 
     public SimilarityChecker(String firstString, String secondString) {
+        if (firstString == null || secondString == null) {
+            throw new NullPointerException("Strings cannot be null");
+        }
+
         this.firstString = firstString;
         this.secondString = secondString;
     }
@@ -28,15 +32,20 @@ public class SimilarityChecker {
         int secondLength = secondString.length();
 
         if (firstLength == secondLength) {
-            return 60; // Assuming 60 is the score for equal length strings
+            return 60;
         }
 
         if (firstLength / secondLength >= 2 || secondLength / firstLength >= 2) {
-            return 0; // Assuming 0 is the score for strings with a length ratio of 2 or more
+            return 0;
         }
 
+        return getPartialScore(firstLength, secondLength);
+    }
+
+    private int getPartialScore(int firstLength, int secondLength) {
         int gap = Math.abs(firstLength - secondLength);
         int minLength = Math.min(firstLength, secondLength);
-        return (int) ((1 - ((double) gap / minLength)) * 60) ;
+
+        return (int) ((1 - ((double) gap / minLength)) * 60);
     }
 }

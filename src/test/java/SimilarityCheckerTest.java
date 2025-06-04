@@ -50,4 +50,11 @@ class SimilarityCheckerTest {
         checker = new SimilarityChecker("aa", "aae");
         assertEquals(30, checker.lengthCheck());
     }
+
+    @Test
+    void lengthCheckWhenStringsAreNull() {
+        assertThrows(NullPointerException.class, () -> {
+            checker = new SimilarityChecker(null, null);
+        });
+    }
 }
