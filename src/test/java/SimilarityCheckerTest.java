@@ -32,10 +32,22 @@ class SimilarityCheckerTest {
         checker = new SimilarityChecker("test", "te");
         assertEquals(0, checker.lengthCheck());
     }
+
     @Test
     void lengthCheckWhenStringsWith2TimesOrMoreDiff2() {
         checker = new SimilarityChecker("a", "abc");
         assertEquals(0, checker.lengthCheck());
     }
 
+    @Test
+    void lengthCheckWhenStringsWithPartialLengthScore1() {
+        checker = new SimilarityChecker("aaabb", "baa");
+        assertEquals(20, checker.lengthCheck());
+    }
+
+    @Test
+    void lengthCheckWhenStringsWithPartialLengthScore2() {
+        checker = new SimilarityChecker("aa", "aae");
+        assertEquals(30, checker.lengthCheck());
+    }
 }

@@ -35,7 +35,8 @@ public class SimilarityChecker {
             return 0; // Assuming 0 is the score for strings with a length ratio of 2 or more
         }
 
-        int result = 60;
-        return result;
+        int gap = Math.abs(firstLength - secondLength);
+        int minLength = Math.min(firstLength, secondLength);
+        return (int) ((1 - ((double) gap / minLength)) * 60) ;
     }
 }
